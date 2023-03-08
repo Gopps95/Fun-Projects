@@ -1,20 +1,21 @@
 import json
 import random
 import string 
+from words import words
 
+#f = open('words.json')
+#words = json.load(f)
 
-f = open('words.json')
-data = json.load(f)
-
-def get_valid_word(data):
+def get_valid_word(words):
+    word = random.choice(words)
     while '-' in word or ' ' in word:
-        word = random.choice(data)
+        word = random.choice(words)
 
     return word.upper()
 
 
 def hangman():
-    word = get_valid_word(data)
+    word = get_valid_word(words)
     word_letters = set(word)
     alphabet = set(string.ascii_uppercase)
     used_letters = set()
@@ -37,3 +38,4 @@ def hangman():
 
 hangman()
 #user_input = input("Type Something")
+#print(user_input)
